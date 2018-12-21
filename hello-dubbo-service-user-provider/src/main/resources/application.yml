@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: hello-dubbo-service-user-provider
+server:
+  port: 9090
+
+user:
+  service:
+    version: 1.0
+
+dubbo:
+  scan:
+    basePackages: com.alan.hello.dubbo.service.user.provider.api
+  application:
+    qos-port: 0
+    qos-enable: true
+    id: hello-dubbo-service-user-provider
+    name: hello-dubbo-service-user-provider
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 12345
+    status: server
+  registry:
+    id: zookeeper
+    address: zookeeper://127.0.0.1:2181
+
+# Enables Dubbo All Endpoints
+management:
+  endpoint:
+    dubbo:
+      enabled: true
+    dubbo-shutdown:
+      enabled: true
+    dubbo-configs:
+      enabled: true
+    dubbo-services:
+      enabled: true
+    dubbo-references:
+      enabled: true
+    dubbo-properties:
+      enabled: true
+  # Dubbo Health
+  health:
+    dubbo:
+      status:
+        ## StatusChecker Name defaults (default : "memory", "load" )
+        defaults: memory
+        ## StatusChecker Name extras (default : empty )
+        extras: load,threadpool

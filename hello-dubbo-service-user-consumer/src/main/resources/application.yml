@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: hello-dubbo-service-user-consumer
+server:
+  port: 18080
+
+#
+user:
+  service:
+    version: 1.0
+
+#
+dubbo:
+  scan:
+    basePackages: com.alan.hello.dubbo.service.user.consumer.controller
+  application:
+    id: hello-dubbo-service-user-consumer
+    name: hello-dubbo-service-user-consumer
+
+#  protocol:
+#    id: dubbo
+#    name: dubbo
+#    port: 12345
+  registry:
+    id: zookeeper
+    check: false
+    address: zookeeper://127.0.0.1:2181
+
+endpoints:
+  dubbo:
+    enable: true
